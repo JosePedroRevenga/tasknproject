@@ -1,0 +1,18 @@
+<h2>Favoritos</h2>
+<div>
+  <input type="text" [(ngModel)]="filtro" placeholder="Nombre de mascota"/>
+</div>
+<pre>{{filtro}}</pre>
+<ul class="favoritos">
+  <li *ngFor="let i of filtrarFav(filtro)">
+    <img [src]="i.foto" [alt]="i.nombre">
+    <span>{{i.nombre}}</span>
+  </li>
+</ul>
+<!-- <h2>Favoritos2</h2>
+<ul class="favoritos">
+  <li *ngFor="let i of escogerSeis()">
+    <img [src]="i.foto" [alt]="i.nombre">
+    <span>{{i.nombre}}</span>
+  </li>
+</ul> -->
