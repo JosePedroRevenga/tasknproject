@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from '../modelos/task';
 
 @Component({
   selector: 'tasks',
@@ -9,22 +10,26 @@ export class TasksComponent implements OnInit {
 
   tasks = null;
   filtro = '';
+  filtroProy:number;
   
-  filtrarTask(filtro){
+  filtrarTask(filtro, filtroProy){
 
-      return this.tasks.filter(function(busqueda){
-        return (busqueda.id.toString().indexOf(filtro) >= 0);
+      return this.tasks.filter(function(proyecto){
+        const texto = (proyecto.desc.toLowerCase().indexOf(filtro.toLowerCase()) >= 0);
+        const id = parseInt(filtroProy)?proyecto.proy===parseInt(filtroProy):true;
+
+        return id && texto;
        })
    };
   constructor() { }
 
   ngOnInit() {
-
+                                    //Inicialización array tareas
     this.tasks = [
-      {id: 0, desc: 'Tarea 1', time: '09/04/2019', proy: 0},
-      {id: 1, desc: 'Tarea 2', time: '10/04/2020', proy: 1},
-      {id: 2, desc: 'Tarea 3', time: '10/04/2021', proy: 2},
-      {id: 3, desc: 'Tarea 4', time: '10/04/2022', proy: 3},
+      new Task(1, 'Tarea a', 21, 1),
+      new Task(2, 'Tarea b', 21, 2),
+      new Task(3, 'Tarea c', 21, 3),
+      new Task(4, 'Tarea d', 21, 4)
       ];
   }
 

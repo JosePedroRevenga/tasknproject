@@ -1,12 +1,13 @@
 <section>
     <h3>Projects:</h3>
-    <input type="text" [(ngModel)]="filtro" placeholder="Project"/>
-    <select [(ngModel)]="filtro" (change)="filtrarProject(this.value)">
+    <input type="text" [(ngModel)]="filtroTexto" placeholder="Project"/>
+    <select [(ngModel)]="filtroId">
+        <option value="0">Proyectos</option>
         <option *ngFor="let i of projects" [value]="i.pid">{{i.pid}}</option>
       </select> 
-    <ol>
-        <li *ngFor="let i of filtrarProject(filtro)">
+    <ul>
+        <li *ngFor="let i of filtrarProject(filtroTexto, filtroId)">
             <span>{{i.pid}}, {{i.title}}</span>
         </li>
-      </ol>
+      </ul>
     </section>

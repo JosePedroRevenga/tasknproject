@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Project } from '../modelos/project';
 
 @Component({
   selector: 'projects',
@@ -8,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class ProjectsComponent implements OnInit {
 
   projects = null;
-  filtro = '';
+  filtroId:number;
+  filtroTexto = '';
   
-  filtrarProject(str){
-    return this.projects.filter(busqueda => ((busqueda.pid.toString().indexOf(str) >= 0)));
+  filtrarProject(filtroTexto, filtroId){
+
+    return this.projects.filter(function (busqueda){
+      const texto = (busqueda.title.toLowerCase().indexOf(filtroTexto.toLowerCase()) >= 0);
+      const id = parseInt(filtroId)?busqueda.pid===parseInt(filtroId):true;
+      
+      return texto && id;
+    })
    };
 
   constructor() { }
@@ -19,10 +27,9 @@ export class ProjectsComponent implements OnInit {
   ngOnInit() {
 
     this.projects = [
-      {pid: 0, title: 'Proyecto 1'},
-      {pid: 1, title: 'Proyecto 2'},
-      {pid: 2, title: 'Proyecto 3'},
-      {pid: 3, title: 'Proyecto 4'}
+      new Project(1, 'Primer proyecto'),
+      new Project(2, 'Segundo proyecto'),
+      new Project(3, 'Tercer proyecto')
       ];
   }
 
