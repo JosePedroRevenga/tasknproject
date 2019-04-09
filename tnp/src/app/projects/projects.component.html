@@ -1,0 +1,10 @@
+<section>
+    <h3>Projects:</h3>
+    <input type="text" [(ngModel)]="filtro" placeholder="Project"/>
+    <pre>{{filtro}}</pre>  
+    <ol>
+        <li *ngFor="let i of filtrarProject(filtro)">
+            <span>{{i.pid}}, {{i.title}}</span>
+        </li>
+      </ol>
+    </section>
