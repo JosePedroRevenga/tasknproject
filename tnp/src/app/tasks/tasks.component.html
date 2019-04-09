@@ -6,8 +6,10 @@
       <option *ngFor="let i of tasks" [value]="i.proy">{{i.proy}}</option>
     </select>
       <ul>
+        <span><strong>Id </strong><strong>Desc </strong><strong></strong></span>
         <li *ngFor="let i of filtrarTask(filtro, filtroProy)">
-          <span>{{i.tid}}, {{i.desc}}, {{i.time}}</span>
+          <span>{{i.tid}}, {{i.desc}}, {{i.time}} </span>
+          <a [routerLink]="['/tasks', i.tid]">Ver</a>
         </li>
       </ul>
     </section>
