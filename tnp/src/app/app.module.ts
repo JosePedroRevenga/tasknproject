@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CabeceraComponent } from './cabecera/cabecera.component';
 import { MostrarTareaComponent } from './tasks/mostrar-tarea/mostrar-tarea.component';
+import { ShowProjectComponent } from './projects/show-project/show-project.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MostrarTareaComponent } from './tasks/mostrar-tarea/mostrar-tarea.compo
     ProjectsComponent,
     PageNotFoundComponent,
     CabeceraComponent,
-    MostrarTareaComponent
+    MostrarTareaComponent,
+    ShowProjectComponent
   ],
   imports: [
     BrowserModule,

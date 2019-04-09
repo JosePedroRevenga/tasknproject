@@ -7,7 +7,8 @@
       </select> 
     <ul>
         <li *ngFor="let i of filtrarProject(filtroTexto, filtroId)">
-            <span>{{i.pid}}, {{i.title}}</span>
+            <span>{{i.pid}}, {{i.title}} </span>
+            <a [routerLink]="['/projects', i.pid]">Ver</a>
         </li>
       </ul>
     </section>

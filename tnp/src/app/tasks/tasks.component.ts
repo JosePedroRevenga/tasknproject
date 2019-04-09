@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from '../modelos/task';
+import { TasksService } from '../servicios/tasks.service';
 
 @Component({
   selector: 'tasks',
@@ -11,7 +11,9 @@ export class TasksComponent implements OnInit {
   tasks = null;
   filtro = '';
   filtroProy:number;
-  
+                                                    //Constructor
+  constructor(private _tarServ:TasksService) { }
+
   filtrarTask(filtro, filtroProy){
 
       return this.tasks.filter(function(proyecto){
@@ -21,16 +23,11 @@ export class TasksComponent implements OnInit {
         return id && texto;
        })
    };
-  constructor() { }
+ 
 
   ngOnInit() {
                                     //Inicialización array tareas
-    this.tasks = [
-      new Task(1, 'Tarea a', 21, 1),
-      new Task(2, 'Tarea b', 21, 2),
-      new Task(3, 'Tarea c', 21, 3),
-      new Task(4, 'Tarea d', 21, 4)
-      ];
+    this.tasks = this._tarServ.getTasks();
   }
 
 }
