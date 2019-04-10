@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../modelos/project';
+import { ProjectsService } from '../servicios/projects.service';
 
 @Component({
   selector: 'projects',
@@ -11,7 +12,15 @@ export class ProjectsComponent implements OnInit {
   projects = null;
   filtroId:number;
   filtroTexto = '';
-  
+ 
+  constructor(private _projServ:ProjectsService) { };
+
+  ngOnInit() {
+
+    this.projects = this._projServ.getProjects();
+  };
+
+   
   filtrarProject(filtroTexto, filtroId){
 
     return this.projects.filter(function (busqueda){
@@ -22,15 +31,5 @@ export class ProjectsComponent implements OnInit {
     })
    };
 
-  constructor() { }
-
-  ngOnInit() {
-
-    this.projects = [
-      new Project(1, 'Primer proyecto'),
-      new Project(2, 'Segundo proyecto'),
-      new Project(3, 'Tercer proyecto')
-      ];
-  }
 
 }

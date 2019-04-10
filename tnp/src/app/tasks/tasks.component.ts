@@ -14,20 +14,20 @@ export class TasksComponent implements OnInit {
                                                     //Constructor
   constructor(private _tarServ:TasksService) { }
 
-  filtrarTask(filtro, filtroProy){
-
-      return this.tasks.filter(function(proyecto){
-        const texto = (proyecto.desc.toLowerCase().indexOf(filtro.toLowerCase()) >= 0);
-        const id = parseInt(filtroProy)?proyecto.proy===parseInt(filtroProy):true;
-
-        return id && texto;
-       })
-   };
- 
-
   ngOnInit() {
                                     //Inicialización array tareas
     this.tasks = this._tarServ.getTasks();
-  }
+  };
+
+  
+  filtrarTask(filtro, filtroProy){
+
+    return this.tasks.filter(function(proyecto){
+      const texto = (proyecto.desc.toLowerCase().indexOf(filtro.toLowerCase()) >= 0);
+      const id = parseInt(filtroProy)?proyecto.proy===parseInt(filtroProy):true;
+
+      return id && texto;
+     })
+ };
 
 }

@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CabeceraComponent } from './cabecera/cabecera.component';
 import { MostrarTareaComponent } from './tasks/mostrar-tarea/mostrar-tarea.component';
 import { ShowProjectComponent } from './projects/show-project/show-project.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ShowProjectComponent } from './projects/show-project/show-project.compo
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
