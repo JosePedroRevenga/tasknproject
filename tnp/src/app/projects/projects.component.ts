@@ -17,18 +17,28 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.projects = this._projServ.getProjects();
+    // this.projects = this._projServ.getProjects();
+    this._projServ.getProjectsFromAPI().subscribe( (dataFromAPI) => {
+
+      return this.projects = dataFromAPI;
+
+    });
   };
 
    
   filtrarProject(filtroTexto, filtroId){
 
-    return this.projects.filter(function (busqueda){
-      const texto = (busqueda.title.toLowerCase().indexOf(filtroTexto.toLowerCase()) >= 0);
-      const id = parseInt(filtroId)?busqueda.pid===parseInt(filtroId):true;
-      
-      return texto && id;
-    })
+                              //If()else para evitar errores a la hora de cargar inicialmente la página, ya que la variable
+                              //local projects es null hasta la recepción de los datos vía getProjectsFromAPI()
+    if(this.projects){
+
+      return this.projects.filter(function (busqueda){
+        const texto = (busqueda.title.toLowerCase().indexOf(filtroTexto.toLowerCase()) >= 0);
+        const id = parseInt(filtroId)?busqueda.pid===parseInt(filtroId):true;
+        
+        return texto && id;
+      });
+    }else return this.projects;
    };
 
 

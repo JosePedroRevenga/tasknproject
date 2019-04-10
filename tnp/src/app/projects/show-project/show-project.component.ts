@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectsService } from 'src/app/servicios/projects.service';
+import { Project } from 'src/app/modelos/project';
 
 
 @Component({
@@ -10,6 +11,7 @@ import { ProjectsService } from 'src/app/servicios/projects.service';
 })
 export class ShowProjectComponent implements OnInit {
 
+  theProject = null;
   constructor(private _route:ActivatedRoute, private _projServ: ProjectsService) { }
 
   ngOnInit() {
@@ -17,8 +19,8 @@ export class ShowProjectComponent implements OnInit {
     this._route.params.subscribe(parametros=>{
       console.log('Parámetros: ', parametros.pid);
       const pid=parametros.pid;
-      const theProject = this._projServ.getProjectById(pid);
-      console.log('The task: ',theProject);
+      this.theProject = this._projServ.getProjectById(pid);
+      console.log('The project: ',this.theProject);
     })
   }
 

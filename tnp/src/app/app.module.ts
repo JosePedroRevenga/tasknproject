@@ -10,6 +10,7 @@ import { CabeceraComponent } from './cabecera/cabecera.component';
 import { MostrarTareaComponent } from './tasks/mostrar-tarea/mostrar-tarea.component';
 import { ShowProjectComponent } from './projects/show-project/show-project.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AddTaskComponent } from './tasks/add-task/add-task.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     PageNotFoundComponent,
     CabeceraComponent,
     MostrarTareaComponent,
-    ShowProjectComponent
+    ShowProjectComponent,
+    AddTaskComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,17 @@
+<!-- Al formulario se le puede dar un identificador #nombre="ngForm" para poder usarlo en el futuro -->
+<!-- (ngSubmit)="función de callback" nos permite que en el evento de enviar el formulario se realice la acción de la función -->
+<form #taskForm="ngForm" (ngSubmit)="saveNewTask()">
+  <label>Description:</label>
+  <!-- Hacemos un doble binding para poder dar valor a la variable local newTask -->
+  <textarea [(ngModel)]="newTask.desc" name="name" cols="30" rows="10" required="true" placeholder="You can write here a small description of the task">
+  </textarea>
+  <pre>{{newTask|json}}</pre>
+  <pre>{{taskForm.valid}}</pre>
+  <label>Time:</label>
+  <input [(ngModel)]="newTask.time" name="name" type="number" required="true" placeholder="Time for deadline" />
+  <label>Project:</label>
+  <input [(ngModel)]="newTask.proy" name="name" type="number" required="true" placeholder="Project"/>
+
+  <!-- [disabled]="condicion" es un atributo angular que permite activar o desactivar el input si la condición especificada es true -->
+  <input [disabled]="!taskForm.valid"type="submit" value="Add"/>
+</form>

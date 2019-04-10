@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TasksService } from 'src/app/servicios/tasks.service';
+import { Task } from 'src/app/modelos/task';
 
 @Component({
   selector: 'mostrar-tarea',
@@ -8,7 +9,7 @@ import { TasksService } from 'src/app/servicios/tasks.service';
   styleUrls: ['./mostrar-tarea.component.scss']
 })
 export class MostrarTareaComponent implements OnInit {
-
+  
 
                               //Invocación activated root en privado para paso de id tarea
 
